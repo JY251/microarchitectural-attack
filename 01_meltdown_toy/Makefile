@@ -1,22 +1,22 @@
-!include ..\common.inc
+include ../common.inc
 
-TARGET=toy.exe
+TARGET = toy.exe
 
-OBJS=\
-	$(OBJDIR)\main.obj\
-	$(OBJDIR)\01.obj\
+OBJS =\
+				$(OBJDIR)\main.obj\
+				$(OBJDIR)\01.obj\
 
 LIBS=\
 
-LFLAGS=\
-	$(LFLAGS)\
-	/SUBSYSTEM:CONSOLE\
+LFLAGS =\
+				$(LFLAGS)\
+				/SUBSYSTEM:CONSOLE\
 
 all: $(OUTDIR)\$(TARGET)
 
 $(OUTDIR)\$(TARGET): $(OBJS)
 	@if not exist $(OUTDIR) mkdir $(OUTDIR)
-	$(LINKER) $(LFLAGS) $(LIBS) /PDB:"$(@R).pdb" /OUT:$@ $**
+	$(LINKER) $(LFLAGS) $(LIBS) /PDF:"$(@R).pdb" /OUT:$@ $**
 
 {$(SRCDIR)}.cpp{$(OBJDIR)}.obj:
 	@if not exist $(OBJDIR) mkdir $(OBJDIR)
@@ -29,4 +29,4 @@ $(OUTDIR)\$(TARGET): $(OBJS)
 clean:
 	@if exist $(OBJDIR) $(RD) $(OBJDIR)
 	@if exist $(OUTDIR)\$(TARGET) $(RM) $(OUTDIR)\$(TARGET)
-	@if exist $(OUTDIR)\$(TARGET:exe=pdb) $(RM) $(OUTDIR)\$(TARGET:exe=pdb)
+	@if exist $(OUTDIR)\$(TARGET: exe = pdb) $(RM) $(OUTDIR)\$(TARFET: exe = pdb)
